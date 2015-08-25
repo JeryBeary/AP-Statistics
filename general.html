@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+    <head>
+        <title>AP Item Comparison</title>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Aller">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="APCheck.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="NORMAL_5X5/BR.json"></script>
+        <script type="text/javascript" src="bargraph.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     </head>
+    <body>
+        <header>
+            <h1 style = "color:white; text-align:center">AP Item Statistics</h1>
+            <button class = "tab" id = "items">AP Items</button>
+            <button class = "tab" id = "champions">Champions</button>
+            <button class = "tab" id = "about">About</button>
+        </header>
+        <div id = "info">
+            <div id = "apitems">
+                <ul id = "list">
+                    <li>
+                        <input type = "image" id = "rabadons" class="item" src="rabadons.jpeg"></input> 
+                        <p>Rabadon's Deathcap</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "rylais" class="item" src="rylais.jpeg"></input> 
+                        <p>Rylai's Crystal Scepter</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "seraphs" class="item" src="seraphs.png"></input> 
+                        <p>Seraph's Embrace</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "ludens" class="item" src="ludens.png"></input> 
+                        <p>Luden's Echo</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "zhonyas" class="item" src="zhonyas.jpeg"></input> 
+                        <p>Zhonya's Hourglass</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "nashors" class="item" src="nashors.png"></input> 
+                        <p>Nashor's Tooth</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "abyssal" class="item" src="abyssal.jpeg"></input> 
+                        <p>Abyssal Scepter</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "morello" class="item" src="morello.jpeg"></input> 
+                        <p>Morellonomicon</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "void" class="item" src="void.jpeg"></input> 
+                        <p>Void Staff</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "athenes" class="item" src="athenes.png"></input>
+                        <p>Athene's Unholy Grail</p>
+                    </li>                        
+                    <li>
+                        <input type = "image" id = "roa" class="item" src="roa.png"></input>
+                        <p>Rod of Ages</p>
+                    </li>
+
+                </ul>    
+             </div>
+             <div id = "chart"; style = " margin-top: 30px; background-color:rgba(102, 153, 255, 0.5); height: 500px;">
+
+             </div>
+        </div>
+    </body>
+</html>
