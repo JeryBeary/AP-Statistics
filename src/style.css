@@ -5,9 +5,9 @@ body{
 	background: linear-gradient(rgba(255,255,255,1), rgba(20,20,20,1));
 	font-size: 100%;
     background-size:cover;
-	background-image: url("league.jpg");
+	background-image: url("../Resources/league.jpg");
     background-attachment:fixed;
-	font-family:Arvo;
+	font-family:roboto;
 	font-style: white;
 }
 header{
@@ -51,8 +51,6 @@ header{
     -webkit-backdrop-filter: blur(10px);
     border-radius: 0px 0px 10px 10px;
     height:600px;
-    
-    
 }
 /*#info:hover{
     background-color:rgba(0,0,0,.75);
@@ -72,4 +70,10 @@ header{
 
     width:60px;
     height:60px;
+}
+.bar_graph{
+    margin-top: 30px;
+    background-color:rgba(0, 0, 0, 0.5);
+    height: 600px;
+    width: 100%;
 }
