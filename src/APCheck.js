@@ -53,9 +53,16 @@ function drawChart()
         color: 'white'
       },
       hAxis: {
+            title: 'Percentage',
+            titleTextStyle: {color: 'red', fontSize:'26'},
             textStyle:{color: '#FFF'},
             baselineColor:'white',
         },
+      vAxis: {
+        title: 'Item',
+        textStyle: {color: 'white'},
+        titleTextStyle: {color:'Blue', fontSize:'26'}
+      },
         bars: 'horizontal', // Required for Material Bar Charts.
         legend: {textStyle: {color:'white'}},
         
@@ -94,12 +101,19 @@ function drawChart2()
         color: 'white'
       },
       hAxis: {
+            title: 'Percentage',
+            titleTextStyle: {color:'green', fontSize: '26'},
             textStyle:{color: 'white'},
-            baselineColor:'white',
-            gridlineColor:'black'
             }, 
         bars: 'horizontal', // Required for Material Bar Charts.
         legend: {textStyle: {color:'white'}},
+      vAxis:{
+        title: 'Item',
+        titleTextStyle: {color:'yellow', fontSize:'26'},
+        textStyle:{
+            color: 'white'
+        }
+      },
 
         
         };
