@@ -5,7 +5,7 @@ body{
 	background: linear-gradient(rgba(255,255,255,1), rgba(20,20,20,1));
 	font-size: 100%;
     background-size:cover;
-	background-image: url("../Resources/league.jpg");
+	background-image: url("../../Resources/league.jpg");
     background-attachment:fixed;
 	font-family:roboto;
 	font-style: white;
@@ -21,6 +21,12 @@ header{
     border-bottom: solid 5px gray;
     -webkit-backdrop-filter: blur(10px);
     border-radius: 50px 50px 0px 0px;
+}
+#display{
+    float:right;
+    margin-right: 22%;
+    width:200px;
+    height:200px;
 }
 #apitems{
     overflow:scroll;

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+    <head>
+        <title>AP Item Comparison</title>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" type="text/css" href="CSS/style.css">
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/BR.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/EUW.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/EUNE.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/NA.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/OCE.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/LAN.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/LAS.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/KR.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/TR.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/RU.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/BR.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/EUW.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/EUNE.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/NA.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/OCE.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/LAN.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/LAS.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/KR.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/TR.json"></script>
+        <script type="text/javascript" src="../gameData/5.11/RANKED_SOLO/RU.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/BR.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/EUW.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/EUNE.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/NA.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/OCE.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/LAN.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/LAS.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/KR.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/TR.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/NORMAL_5X5/RU.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/BR.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/EUW.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/EUNE.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/NA.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/OCE.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/LAN.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/LAS.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/KR.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/TR.json"></script>
+        <script type="text/javascript" src="../gameData/5.14/RANKED_SOLO/RU.json"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="Script/APCheck.js"></script>
+     </head>
+    <body>
+        <header>
+            <h1 style = "color:white; text-align:center">AP Item Statistics</h1>
+            <button class = "tab" id = "items">AP Items</button>
+            <button class = "tab" id = "champions">Champions</button>
+            <button class = "tab" id = "about">About</button>
+        </header>
+        <div id = "info">
+            <image id = "display" src = "../Resources/rabadons.jpeg"></image> 
+            <div id = "summary"></div>
+            <div id = "apitems">
+                <ul id = "list">
+                    <li>
+                        <input type = "image" id = "rabadons" class="item" src="../Resources/rabadons.jpeg"></input> 
+                        <p>Rabadon's Deathcap</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "rylais" class="item" src="../Resources/rylais.jpeg"></input> 
+                        <p>Rylai's Crystal Scepter</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "seraphs" class="item" src="../Resources/seraphs.png"></input> 
+                        <p>Seraph's Embrace</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "ludens" class="item" src="../Resources/ludens.png"></input> 
+                        <p>Luden's Echo</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "zhonyas" class="item" src="../Resources/zhonyas.jpeg"></input> 
+                        <p>Zhonya's Hourglass</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "nashors" class="item" src="../Resources/nashors.png"></input> 
+                        <p>Nashor's Tooth</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "abyssal" class="item" src="../Resources/abyssal.jpeg"></input> 
+                        <p>Abyssal Scepter</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "morello" class="item" src="../Resources/morello.jpeg"></input> 
+                        <p>Morellonomicon</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "void" class="item" src="../Resources/void.jpeg"></input> 
+                        <p>Void Staff</p>
+                    </li>
+                    <li>
+                        <input type = "image" id = "athenes" class="item" src="../Resources/athenes.png"></input>
+                        <p>Athene's Unholy Grail</p>
+                    </li>                        
+                    <li>
+                        <input type = "image" id = "roa" class="item" src="../Resources/roa.png"></input>
+                        <p>Rod of Ages</p>
+                    </li>
+
+                </ul> 
+
+             </div>
+
+        </div>
+             <h1 style = "text-align:center; color: orange">Win Rates</h1>
+             <div id = "chart"; class = "bar_graph" style="background-color:rgba(102, 0, 102, 0.5)"></div>
+             <h1 style = "text-align:center; color: red">Pick Rates</h1>
+             <div id ="chart_two" class = "bar_graph" style="background-color: rgba(102,102,153,0.5)"></div>>
+    </body>
+</html>

@@ -25,11 +25,15 @@ var actual;
 google.load("visualization", "1.1", {packages:["bar"]});
 google.setOnLoadCallback(drawChart);
 
+
 //instantiates info to draw graphs and adds detail
 function drawChart()
 {
+    //the data portion of the graph has the values represented
     var data = google.visualization.arrayToDataTable([
+        //titles
         ['Item', 'Old Win Rate', 'New Win Rate'],
+        //We are using percentages for win rate/pick rate so we are multiplying by 100
         ["Rabadon's Deathcap", 100*(rabadonsGames.oldWins/rabadonsGames.oldGames), 100*(rabadonsGames.newWins/rabadonsGames.newGames) ],
         ["Rylai's Crystal Scepter", 100*(rylaisGames.oldWins/rylaisGames.oldGames), 100*(rylaisGames.newWins/rylaisGames.newGames) ],
         ["Seraph's Embrace", 100*(seraphsGames.oldWins/seraphsGames.oldGames), 100*(seraphsGames.newWins/seraphsGames.newGames) ],
@@ -43,6 +47,7 @@ function drawChart()
         ["Rod of Ages", 100*(rodGames.oldWins/rodGames.oldGames), 100*(rodGames.newWins/rodGames.newGames) ],
         ]);
 
+// configurations for the chart, creates different visual settings
 var options = {
 
   chart: {
@@ -92,58 +97,68 @@ function drawChart2()
         ["Rod of Ages", 100*(rodGames.oldGames/oldgames), 100*(rodGames.newGames/newgames) ],
         ]);
 
-var options = {
-  chart: {
-    title: 'Pick rates of New and Old AP Items',
-    subtitle: 'Analyzed from a set of normal and ranked games before and after the changes',
-},
-textStyle: {
-    color: 'white'
-},
-hAxis: {
-    title: 'Percentage',
-    titleTextStyle: {color:'green', fontSize: '26'},
-    textStyle:{color: 'white'},
-}, 
-        bars: 'horizontal', // Required for Material Bar Charts.
-        legend: {textStyle: {color:'white'}},
-        vAxis:{
-            title: 'Item',
-            titleTextStyle: {color:'yellow', fontSize:'26'},
-            textStyle:{
-                color: 'white'
-            }
-        },
+//configurations for the chart, creates a different visual look
+    var options = {
+      chart: {
+        title: 'Pick rates of New and Old AP Items',
+        subtitle: 'Analyzed from a set of normal and ranked games before and after the changes',
+    },
+    textStyle: {
+        color: 'white'
+    },
+    //horizontal axis features, such as font color
+    hAxis: {
+        title: 'Percentage',
+        titleTextStyle: {color:'green', fontSize: '26'},
+        textStyle:{color: 'white'},
+    }, 
+            animation: {"startup": true},
+            bars: 'horizontal', // Required for Material Bar Charts.
+            legend: {textStyle: {color:'white'}},
+            vAxis:{
+                title: 'Item',
+                titleTextStyle: {color:'yellow', fontSize:'26'},
+                textStyle:{
+                    color: 'white'
+                }
+            },
 
         
     };
 
-
+    //prepapares to draw the bar graph
     var chart = new google.charts.Bar(document.getElementById("chart_two"));
-    //convertOptions necessary for Material Bar Charts
     chart.draw(data, google.charts.Bar.convertOptions(options));
 }
 window.onload = fileSearch();
 
+
+//sends in the files to be parsed by JSON
+//there are multiple categories, from 5.11 and 5.14 and between normals and rankeds
+//all values contribute to the final results displayed in the graph
 function fileSearch()
 {
     //loop through all old games in all files
 
-    loadJSON("../gameData/NORMAL_5X5/BR.json",'br');
+    loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);
+/*    loadJSON("../gameData/5.11/NORMAL_5X5/NA.json",'br', true);
+    loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);
+    loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);
+    loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);
+    loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);   */ 
     //loop through every JSON file
     // go through each
     
 }
 
-function loadJSON(file, region)
+function loadJSON(file, region, old)
 {
     $.getJSON(file, function(data){
         //data is the json file
         //there is only a single array
         var len = data.length;
-                    checkStat(data[1].toString(), region);
+                    checkStat(data[1].toString(), region, true);
         for(i = 0; i < len; i++){
-
 
            
         }
@@ -154,7 +169,7 @@ function loadJSON(file, region)
 /*
 add to counters
 */
-function checkStat(matchId, region){
+function checkStat(matchId, region, old){
 
         //HTTP Request to the Riot Games Server using Ajax
         //Uses API key and region as info
@@ -165,21 +180,25 @@ function checkStat(matchId, region){
             dataType: 'json',
 
             success: function (json, textStatus, jqXHR) {
-                var item = json.participants[0].stats.item0;
                 for( x = 0; x<10; x++)
                 {
-                    /*
-                    if(json[matchId].participants[0].stats.item0)
-                    {
-                        
-                    }
-                    if(json[matchId].participants[0].stats.item1)
-                    {
+                    isAPItem(json.participants[x].stats.item0, old);
+                    isAPItem(json.participants[x].stats.item1, old);
+                    isAPItem(json.participants[x].stats.item2, old);
+                    isAPItem(json.participants[x].stats.item3, old);
+                    isAPItem(json.participants[x].stats.item4, old);
+                    isAPItem(json.participants[x].stats.item5, old);
+                    isAPItem(json.participants[x].stats.item6, old);                   
 
-                    }
-                    */
                 }
-                document.getElementById("items").innerHTML = item;
+                if(old)
+                {
+                    oldgames = oldgames + 10;
+                }
+                else
+                {
+                    newGames = newGames + 10;
+                }
             
 
             },
@@ -190,6 +209,136 @@ function checkStat(matchId, region){
 
     }
 
+function isAPItem(itemId, old)
+{
+    switch(itemId)
+    {
+        case 3089:
+            if(old)
+            {
+                rabadonsGames.oldGames++;
+            }
+            else
+            {
+                rabadonsGames.newGames++;
+            }
+            break;
+        case 3116:
+            if(old)
+            {
+                rylaisGames.oldGames++;
+            }
+            else
+            {
+                rylaisGames.newGames++;
+            }
+            break;
+        case 3048:
+            if(old)
+            {
+                seraphsGames.oldGames++;
+            }
+            else
+            {
+                seraphsGames.newGames++;
+            }
+            break;
+        case 3040:
+            if(old)
+            {
+                seraphsGames.oldGames++;
+            }
+            else
+            {
+                seraphsGames.newGames++;
+            }
+            break;
+        case 3285:
+            if(old)
+            {
+                ludensGames.oldGames++;
+            }
+            else
+            {
+                ludensGames.newGames++;
+            }
+            break;
+        case 3157:
+            if(old)
+            {
+                zhonyasGames.oldGames++;
+            }
+            else
+            {
+                zhonyasGames.newGames++;
+            }
+            break;
+        case 3115:
+            if(old)
+            {
+                nashorsGames.oldGames++;
+            }
+            else
+            {
+                nashorsGames.newGames++;
+            }
+            break;
+        case 3001:
+            if(old)
+            {
+                abyssalGames.oldGames++;
+            }
+            else
+            {
+                abyssalGames.newGames++;
+            }
+            break;
+        case 3165:
+            if(old)
+            {
+                morelloGames.oldGames++;
+            }
+            else
+            {
+                morelloGames.newGames++;
+            }
+            break;
+        case 3135:
+            if(old)
+            {
+                voidGames.oldGames++;
+            }
+            else
+            {
+                voidGames.newGames++;
+            }
+            break;
+        case 3174:
+            if(old)
+            {
+                athenesGames.oldGames++;
+            }
+            else
+            {
+                athenesGames.newGames++;
+            }
+            break;
+        case 3027:
+            if(old)
+            {
+                rodGames.oldGames++;
+            }
+            else
+            {
+                rodGames.newGames++;
+            }
+            break;
+
+            drawChart2();
+
+    }
+
+}
 
 
 
