@@ -25,6 +25,11 @@ var actual;
 google.load("visualization", "1.1", {packages:["bar"]});
 google.setOnLoadCallback(drawChart);
 
+//changes image of item to whatever is selected
+function changeItem(newItem)
+{
+    $("#display").attr("src", newItem);
+}
 
 //instantiates info to draw graphs and adds detail
 function drawChart()
@@ -338,7 +343,10 @@ function isAPItem(itemId, old)
 
     }
 
+
 }
+
+
 
 
 
