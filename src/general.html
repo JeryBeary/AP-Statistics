@@ -3,6 +3,7 @@
     <head>
         <title>AP Item Comparison</title>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="../gameData/5.11/NORMAL_5X5/BR.json"></script>
@@ -51,58 +52,60 @@
     <body>
         <header>
             <h1 style = "color:white; text-align:center">AP Item Statistics</h1>
-            <button class = "tab" id = "items">AP Items</button>
-            <button class = "tab" id = "champions">Champions</button>
-            <button class = "tab" id = "about">About</button>
+            <button class = "tab" id = "items" onclick = "window.open('general.html')">AP Items</button>
+            <button class = "tab" id = "about" onclick="window.open('about.html')">About</button>
         </header>
         <div id = "info">
-            <image id = "display" src = "../Resources/rabadons.jpeg"></image> 
 
-            <div id = "summary">Old Pick Rate in Games:</div>
+            <div id = "labels">
+                <image id = "display" src = "../Resources/rabadons.jpeg"></image> 
+                <div id = "summary" style ="margin-top: 30%;" class = 'label'>Old Pick Rate in Games:</div>
+                <div id = "summary_2" style = "margin-top:30%;" class = 'label'>New Pick Rate in Games:</div>
+            </div>
             <div id = "apitems">
                 <ul id = "list">
                     <li>
-                        <input type = "image" id = "rabadons" class="item" src="../Resources/rabadons.jpeg" onclick="changeItem('../Resources/rabadons.jpeg');"></input> 
+                        <input type = "image" id = "rabadons" class="item" src="../Resources/rabadons.jpeg" onclick="changeItem('../Resources/rabadons.jpeg'); changeRates('rabadons');"></input> 
                         <p>Rabadon's Deathcap</p>
                     </li>
                     <li>
-                        <input type = "image" id = "rylais" class="item" src="../Resources/rylais.jpeg" onclick="changeItem('../Resources/rylais.jpeg');"></input> 
+                        <input type = "image" id = "rylais" class="item" src="../Resources/rylais.jpeg" onclick="changeItem('../Resources/rylais.jpeg'); changeRates('rylais');"></input> 
                         <p>Rylai's Crystal Scepter</p>
                     </li>
                     <li>
-                        <input type = "image" id = "seraphs" class="item" src="../Resources/seraphs.png"onclick="changeItem('../Resources/seraphs.png')";></input> 
+                        <input type = "image" id = "seraphs" class="item" src="../Resources/seraphs.png"onclick="changeItem('../Resources/seraphs.png'); changeRates('seraphs');"></input> 
                         <p>Seraph's Embrace</p>
                     </li>
                     <li>
-                        <input type = "image" id = "ludens" class="item" src="../Resources/ludens.png"onclick="changeItem('../Resources/ludens.png')"></input> 
+                        <input type = "image" id = "ludens" class="item" src="../Resources/ludens.png"onclick="changeItem('../Resources/ludens.png'); changeRates('ludens');"></input> 
                         <p>Luden's Echo</p>
                     </li>
                     <li>
-                        <input type = "image" id = "zhonyas" class="item" src="../Resources/zhonyas.jpeg"onclick="changeItem('../Resources/zhonyas.jpeg')"></input> 
+                        <input type = "image" id = "zhonyas" class="item" src="../Resources/zhonyas.jpeg"onclick="changeItem('../Resources/zhonyas.jpeg'); changeRates('zhonyas');"></input> 
                         <p>Zhonya's Hourglass</p>
                     </li>
                     <li>
-                        <input type = "image" id = "nashors" class="item" src="../Resources/nashors.png"onclick="changeItem('../Resources/nashors.png')"></input> 
+                        <input type = "image" id = "nashors" class="item" src="../Resources/nashors.png"onclick="changeItem('../Resources/nashors.png'); changeRates('nashors');"></input> 
                         <p>Nashor's Tooth</p>
                     </li>
                     <li>
-                        <input type = "image" id = "abyssal" class="item" src="../Resources/abyssal.jpeg"onclick="changeItem('../Resources/abyssal.jpeg')"></input> 
+                        <input type = "image" id = "abyssal" class="item" src="../Resources/abyssal.jpeg"onclick="changeItem('../Resources/abyssal.jpeg'); changeRates('abyssal');"></input> 
                         <p>Abyssal Scepter</p>
                     </li>
                     <li>
-                        <input type = "image" id = "morello" class="item" src="../Resources/morello.jpeg"onclick="changeItem('../Resources/morello.jpeg')"></input> 
+                        <input type = "image" id = "morello" class="item" src="../Resources/morello.jpeg"onclick="changeItem('../Resources/morello.jpeg'); changeRates('morello');"></input> 
                         <p>Morellonomicon</p>
                     </li>
                     <li>
-                        <input type = "image" id = "void" class="item" src="../Resources/void.jpeg"onclick="changeItem('../Resources/void.jpeg')"></input> 
+                        <input type = "image" id = "void" class="item" src="../Resources/void.jpeg"onclick="changeItem('../Resources/void.jpeg'); changeRates('void');"></input>
                         <p>Void Staff</p>
                     </li>
                     <li>
-                        <input type = "image" id = "athenes" class="item" src="../Resources/athenes.png"onclick="changeItem('../Resources/athenes.png')"></input>
+                        <input type = "image" id = "athenes" class="item" src="../Resources/athenes.png"onclick="changeItem('../Resources/athenes.png'); changeRates('athenes');"></input>
                         <p>Athene's Unholy Grail</p>
                     </li>                        
                     <li>
-                        <input type = "image" id = "roa" class="item" src="../Resources/roa.png"onclick="changeItem('../Resources/roa.png')"></input>
+                        <input type = "image" id = "roa" class="item" src="../Resources/roa.png"onclick="changeItem('../Resources/roa.png'); changeRates('rod');"></input>
                         <p>Rod of Ages</p>
                     </li>
 
@@ -111,9 +114,7 @@
              </div>
 
         </div>
-             <h1 style = "text-align:center; color: orange">Win Rates</h1>
-             <div id = "chart"; class = "bar_graph" style="background-color:rgba(102, 0, 102, 0.5)"></div>
              <h1 style = "text-align:center; color: red">Pick Rates</h1>
-             <div id ="chart_two" class = "bar_graph" style="background-color: rgba(102,102,153,0.5)"></div>>
+             <div id ="chart_one" class = "bar_graph" style="background-color: rgba(102,102,153,0.5)"></div>>
     </body>
 </html>

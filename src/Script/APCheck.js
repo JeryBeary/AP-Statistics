@@ -1,4 +1,8 @@
-
+/*
+* This is the main javascript file of AP-Statistics.
+* Contains info on the API requests and the google chart
+* details
+*/
 var API_KEY = "042c618c-50fb-48d9-8ef0-d9879460b899";
 
 
@@ -29,6 +33,73 @@ google.setOnLoadCallback(drawChart);
 function changeItem(newItem)
 {
     $("#display").attr("src", newItem);
+ 
+ 
+}
+
+function changeRates(changed)
+{
+    var oldVal;
+    var newVal;
+    if(changed = 'rabadons')
+    {
+        oldVal = 100*(rabadonsGames.oldGames/oldgames);
+        newVal = 100*(rabadonsGames.newGames/newgames);
+
+    }
+    else if(changed = 'rylais')
+    {
+        oldVal = 100*(rylaisGames.oldGames/oldgames);
+        newVal = 100*(rylaisGames.newGames/newgames);        
+    }
+    else if(changed = 'seraphs')
+    {
+        oldVal = 100*(seraphsGames.oldGames/oldgames);
+        newVal = 100*(seraphsGames.newGames/newgames);        
+    }
+    else if(changed = 'ludens')
+    {
+        oldVal = 100*(ludensGames.oldGames/oldgames);
+        newVal = 100*(ludensGames.newGames/newgames);        
+    }
+    else if(changed = 'zhonyas')
+    {
+        oldVal = 100*(zhonyasGames.oldGames/oldgames);
+        newVal = 100*(zhonyasGames.newGames/newgames);        
+    }
+    else if(changed = 'nashors')
+    {
+        oldVal = 100*(nashorsGames.oldGames/oldgames);
+        newVal = 100*(nashorsGames.newGames/newgames);        
+    }
+    else if(changed = 'abyssal')
+    {
+        oldVal = 100*(abyssalGames.oldGames/oldgames);
+        newVal = 100*(abyssalGames.newGames/newgames);        
+    }
+    else if(changed = 'morello')
+    {
+        oldVal = 100*(morelloGames.oldGames/oldgames);
+        newVal = 100*(morelloGames.newGames/newgames);        
+    }
+    else if(changed = 'void')
+    {
+        oldVal = 100*(voidGames.oldGames/oldgames);
+        newVal = 100*(voidGames.newGames/newgames);        
+    }
+    else if(changed = 'athenes')
+    {
+        oldVal = 100*(athenesGames.oldGames/oldgames);
+        newVal = 100*(athenesGames.newGames/newgames);        
+    }
+    else if(changed = 'rod')
+    {
+        oldVal = 100*(rodGames.oldGames/oldgames);
+        newVal = 100*(rodGames.newGames/newgames);        
+    }
+
+    document.getElementById("summary").innerText = "Old Pick Rate in Games: " + oldVal;  
+    document.getElementById("summary_2").innerText = "New Pick Rate in Games: " + newVal;  
 }
 
 //instantiates info to draw graphs and adds detail
@@ -37,57 +108,6 @@ function drawChart()
     //the data portion of the graph has the values represented
     var data = google.visualization.arrayToDataTable([
         //titles
-        ['Item', 'Old Win Rate', 'New Win Rate'],
-        //We are using percentages for win rate/pick rate so we are multiplying by 100
-        ["Rabadon's Deathcap", 100*(rabadonsGames.oldWins/rabadonsGames.oldGames), 100*(rabadonsGames.newWins/rabadonsGames.newGames) ],
-        ["Rylai's Crystal Scepter", 100*(rylaisGames.oldWins/rylaisGames.oldGames), 100*(rylaisGames.newWins/rylaisGames.newGames) ],
-        ["Seraph's Embrace", 100*(seraphsGames.oldWins/seraphsGames.oldGames), 100*(seraphsGames.newWins/seraphsGames.newGames) ],
-        ["Luden's Echo", 100*(ludensGames.oldWins/ludensGames.oldGames), 100*(ludensGames.newWins/ludensGames.newGames) ],
-        ["Zhonya's Hourglass", 100*(zhonyasGames.oldWins/zhonyasGames.oldGames), 100*(zhonyasGames.newWins/zhonyasGames.newGames) ],
-        ["Nashor's Tooth", 100*(nashorsGames.oldWins/nashorsGames.oldGames), 100*(nashorsGames.newWins/nashorsGames.newGames) ],
-        ["Abyssal Scepter", 100*(abyssalGames.oldWins/abyssalGames.oldGames), 100*(abyssalGames.newWins/abyssalGames.newGames) ],
-        ["Morellonomicon", 100*(morelloGames.oldWins/morelloGames.oldGames), 100*(morelloGames.newWins/morelloGames.newGames) ],
-        ["Void Staff", 100*(voidGames.oldWins/voidGames.oldGames), 100*(voidGames.newWins/voidGames.newGames) ],
-        ["Athene's Unholy Grail", 100*(athenesGames.oldWins/athenesGames.oldGames), 100*(athenesGames.newWins/athenesGames.newGames) ],
-        ["Rod of Ages", 100*(rodGames.oldWins/rodGames.oldGames), 100*(rodGames.newWins/rodGames.newGames) ],
-        ]);
-
-// configurations for the chart, creates different visual settings
-var options = {
-
-  chart: {
-    title: 'Win rates of New and Old AP Items',
-    subtitle: 'Analyzed from a set of normal and ranked games before and after the changes',
-},
-textStyle: {
-    color: 'white'
-},
-hAxis: {
-    title: 'Percentage',
-    titleTextStyle: {color: 'red', fontSize:'26'},
-    textStyle:{color: '#FFF'},
-    baselineColor:'white',
-},
-vAxis: {
-    title: 'Item',
-    textStyle: {color: 'white'},
-    titleTextStyle: {color:'Blue', fontSize:'26'}
-},
-        bars: 'horizontal', // Required for Material Bar Charts.
-        legend: {textStyle: {color:'white'}},
-        
-    };
-
-    var chart = new google.charts.Bar(document.getElementById("chart"));
-    //convertOptions necessary for Material Bar Charts
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-
-    drawChart2();
-}
-
-function drawChart2()
-{
-    var data = google.visualization.arrayToDataTable([
         ['Item', 'Old Pick Rate', 'New Pick Rate'],
         ["Rabadon's Deathcap", 100*(rabadonsGames.oldGames/oldgames), 100*(rabadonsGames.newGames/newgames) ],
         ["Rylai's Crystal Scepter", 100*(rylaisGames.oldGames/oldgames), 100*(rylaisGames.newGames/newgames) ],
@@ -102,7 +122,7 @@ function drawChart2()
         ["Rod of Ages", 100*(rodGames.oldGames/oldgames), 100*(rodGames.newGames/newgames) ],
         ]);
 
-//configurations for the chart, creates a different visual look
+// configurations for the chart, creates different visual settings
     var options = {
       chart: {
         title: 'Pick rates of New and Old AP Items',
@@ -130,11 +150,10 @@ function drawChart2()
 
         
     };
-
-    //prepapares to draw the bar graph
-    var chart = new google.charts.Bar(document.getElementById("chart_two"));
+    var chart = new google.charts.Bar(document.getElementById("chart_one"));
     chart.draw(data, google.charts.Bar.convertOptions(options));
 }
+
 window.onload = fileSearch();
 
 
@@ -145,7 +164,9 @@ function fileSearch()
 {
     //loop through all old games in all files
 
-    loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);
+    loadJSON("../gameData/5.11/NORMAL_5X5/NA.json",'na', true);
+    loadJSON("../gameData/5.14/NORMAL_5X5/NA.json",'na', false);
+    //this portion of the code is useless until I can get a better production key
 /*    loadJSON("../gameData/5.11/NORMAL_5X5/NA.json",'br', true);
     loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);
     loadJSON("../gameData/5.11/NORMAL_5X5/BR.json",'br', true);
@@ -156,15 +177,16 @@ function fileSearch()
     
 }
 
+//old is whether or not it is in 5.14 or 5.11
 function loadJSON(file, region, old)
 {
     $.getJSON(file, function(data){
         //data is the json file
         //there is only a single array
         var len = data.length;
-                    checkStat(data[1].toString(), region, true);
-        for(i = 0; i < len; i++){
 
+        for(i = 0; i < 5; i++){
+                checkStat(data[i].toString(), region, true);
            
         }
     });
@@ -214,10 +236,12 @@ function checkStat(matchId, region, old){
 
     }
 
+//tests if the given item is an AP item in order to confirm if it is valuable for the data
 function isAPItem(itemId, old)
 {
     switch(itemId)
     {
+        //uses gameIds to determine
         case 3089:
             if(old)
             {
@@ -339,7 +363,7 @@ function isAPItem(itemId, old)
             }
             break;
 
-            drawChart2();
+
 
     }
 
